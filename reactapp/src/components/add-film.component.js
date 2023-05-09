@@ -37,6 +37,48 @@ class AddFilm extends Component {
     });
   }
 
+  onChangeScore(e) {
+    this.setState({
+      score: e.target.value
+    });
+  }
+
+  onChangePublished(e) {
+    this.setState({
+      published: e.target.value === "true" ? true : false,
+    });
+}
+
+onChangeDirector(e) {
+    this.setState({
+      director: e.target.value,
+    });
+}
+
+onChangeActors(e) {
+    this.setState({
+      actors: e.target.value,
+    });
+}
+
+onChangeGenre(e) {
+    this.setState({
+      genre: e.target.value,
+    });
+}
+
+onChangeDuration(e) {
+    this.setState({
+      duration: e.target.value,
+    });
+}
+
+onChangeYear(e) {
+    this.setState({
+      year: e.target.value,
+    });
+}
+
   saveFilm() {
     const { title, description } = this.state;
 
@@ -106,6 +148,105 @@ class AddFilm extends Component {
                 name="description"
               />
             </div>
+
+            <div className="form-group">
+  <label htmlFor="year">Year</label>
+  <select className="form-control" id="year" onChange={this.onChangeYear} value={this.state.year}>
+    {[...Array(124)].map((_, i) => {
+      const year = 2023 - i;
+      return (
+        <option key={year} value={year}>
+          {year}
+        </option>
+      );
+    })}
+  </select>
+</div>
+
+            <div className="form-group">
+              <label htmlFor="duration">Duration</label>
+              <input
+                type="text"
+                className="form-control"
+                id="duration"
+                required
+                value={this.state.duration}
+                onChange={this.onChangeDuration}
+                name="duration"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="genre">Genre</label>
+              <input
+                type="text"
+                className="form-control"
+                id="genre"
+                required
+                value={this.state.genre}
+                onChange={this.onChangeGenre}
+                name="genre"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="actors">Actors</label>
+              <input
+                type="text"
+                className="form-control"
+                id="actors"
+                required
+                value={this.state.actors}
+                onChange={this.onChangeActors}
+                name="actors"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="director">Director</label>
+              <input
+                type="text"
+                className="form-control"
+                id="director"
+                required
+                value={this.state.director}
+                onChange={this.onChangeDirector}
+                name="director"
+              />
+            </div>
+
+            <div className="form-group">
+  <label htmlFor="score">Score</label>
+  <input
+    type="number"
+    className="form-control"
+    id="score"
+    required
+    value={this.state.score}
+    onChange={this.onChangeScore}
+    name="score"
+    step="0.1"
+    min="1"
+    max="10"
+  />
+</div>
+
+            
+            <div className="form-group">
+            <label htmlFor="published">Published</label>
+              <select
+              className="form-control"
+              id="published"
+              required
+              value={this.state.published}
+              onChange={this.onChangePublished}
+              name="published"
+              >
+              <option value={true}>True</option>
+              <option value={false}>False</option>
+            </select>
+        </div>
+    
             <br></br>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <button onClick={this.saveFilm} className="btn btn-success">
