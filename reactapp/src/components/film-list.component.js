@@ -185,7 +185,7 @@ class FilmsList extends Component {
                 to={"/films/" + currentFilm.id}
                 className="badge badge-warning"
               >
-                Edit
+                <button className="m-3 btn btn-sm btn-warning mr-2"> Edit </button>
               </Link>
             </div>
           ) : (
