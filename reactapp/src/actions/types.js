@@ -1,0 +1,5 @@
+export const CREATE_FILM = "CREATE_FILM";
+export const RETRIEVE_FILMS = "RETRIEVE_FILMS";
+export const UPDATE_FILM = "UPDATE_FILM";
+export const DELETE_FILM = "DELETE_FILM";
+export const DELETE_ALL_FILMS = "DELETE_ALL_FILMS";
