@@ -14,9 +14,14 @@ class AddFilm extends Component {
       id: null,
       title: "",
       description: "",
+      duration: "",
+      genre: "",
+      director: "",
+      year: 0,
+      actors: "",
+      score: 0,
+      imageUrl: "",
       published: false,
-
-      submitted: false,
     };
   }
 
@@ -101,10 +106,17 @@ class AddFilm extends Component {
                 name="description"
               />
             </div>
+            <br></br>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <button onClick={this.saveFilm} className="btn btn-success">
+                Submit
+              </button>
 
-            <button onClick={this.saveFilm} className="btn btn-success">
-              Submit
-            </button>
+              <button onClick={this.saveFilm} className="btn btn-info">
+                Go Back
+              </button>
+            </div>
+
           </div>
         )}
       </div>
