@@ -140,6 +140,42 @@ class FilmsList extends Component {
               </div>
               <div>
                 <label>
+                  <strong>Year:</strong>
+                </label>{" "}
+                {currentFilm.year}
+              </div>
+              <div>
+                <label>
+                  <strong>Duration:</strong>
+                </label>{" "}
+                {currentFilm.duration}
+              </div>
+              <div>
+                <label>
+                  <strong>Genre:</strong>
+                </label>{" "}
+                {currentFilm.genre}
+              </div>
+              <div>
+                <label>
+                  <strong>Actors:</strong>
+                </label>{" "}
+                {currentFilm.actors}
+              </div>
+              <div>
+                <label>
+                  <strong>Director:</strong>
+                </label>{" "}
+                {currentFilm.director}
+              </div>
+              <div>
+                <label>
+                  <strong>Score:</strong>
+                </label>{" "}
+                {currentFilm.score}
+              </div>
+              <div>
+                <label>
                   <strong>Status:</strong>
                 </label>{" "}
                 {currentFilm.published ? "Published" : "Pending"}
