@@ -79,37 +79,49 @@ onChangeYear(e) {
     });
 }
 
-  saveFilm() {
-    const { title, description } = this.state;
+saveFilm() {
+  const { title, year, duration, genre, director, actors, description, score, imageUrl, published } = this.state;
 
-    this.props
-      .createFilm(title, description)
-      .then((data) => {
-        this.setState({
-          id: data.id,
-          title: data.title,
-          description: data.description,
-          published: data.published,
-
-          submitted: true,
-        });
-        console.log(data);
-      })
-      .catch((e) => {
-        console.log(e);
+  this.props
+    .createFilm(title, year, duration, genre, director, actors, description, score, imageUrl, published)
+    .then((data) => {
+      this.setState({
+        id: data.id,
+        title: data.title,
+        year: data.year,
+        duration: data.duration,
+        genre: data.genre,
+        director: data.director,
+        actors: data.actors,
+        description: data.description,
+        score: data.score,
+        imageUrl: data.imageUrl,
+        published: data.published,
+        submitted: true,
       });
-  }
-
-  newFilm() {
-    this.setState({
-      id: null,
-      title: "",
-      description: "",
-      published: false,
-
-      submitted: false,
+      console.log(data);
+    })
+    .catch((e) => {
+      console.log(e);
     });
-  }
+}
+
+newFilm() {
+  this.setState({
+    id: null,
+    title: "",
+    year: "",
+    duration: "",
+    genre: "",
+    director: "",
+    actors: "",
+    description: "",
+    score: "",
+    imageUrl: "",
+    published: false,
+    submitted: false,
+  });
+}
 
   render() {
     return (
