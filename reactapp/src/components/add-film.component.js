@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createFilm } from "../actions/films";
+import { Link } from "react-router-dom";
 
 class AddFilm extends Component {
   constructor(props) {
     super(props);
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeScore = this.onChangeScore.bind(this);
+    this.onChangePublished = this.onChangePublished.bind(this);
+    this.onChangeDirector = this.onChangeDirector.bind(this);
+    this.onChangeActors = this.onChangeActors.bind(this);
+    this.onChangeGenre = this.onChangeGenre.bind(this);
+    this.onChangeDuration = this.onChangeDuration.bind(this);
+    this.onChangeYear = this.onChangeYear.bind(this);
     this.saveFilm = this.saveFilm.bind(this);
     this.newFilm = this.newFilm.bind(this);
 
@@ -47,81 +55,81 @@ class AddFilm extends Component {
     this.setState({
       published: e.target.value === "true" ? true : false,
     });
-}
+  }
 
-onChangeDirector(e) {
+  onChangeDirector(e) {
     this.setState({
       director: e.target.value,
     });
-}
+  }
 
-onChangeActors(e) {
+  onChangeActors(e) {
     this.setState({
       actors: e.target.value,
     });
-}
+  }
 
-onChangeGenre(e) {
+  onChangeGenre(e) {
     this.setState({
       genre: e.target.value,
     });
-}
+  }
 
-onChangeDuration(e) {
+  onChangeDuration(e) {
     this.setState({
       duration: e.target.value,
     });
-}
+  }
 
-onChangeYear(e) {
+  onChangeYear(e) {
     this.setState({
       year: e.target.value,
     });
-}
+  }
 
-saveFilm() {
-  const { title, year, duration, genre, director, actors, description, score, imageUrl, published } = this.state;
+  saveFilm() {
+    const { title, year, duration, genre, director, actors, description, score, imageUrl, published } = this.state;
 
-  this.props
-    .createFilm(title, year, duration, genre, director, actors, description, score, imageUrl, published)
-    .then((data) => {
-      this.setState({
-        id: data.id,
-        title: data.title,
-        year: data.year,
-        duration: data.duration,
-        genre: data.genre,
-        director: data.director,
-        actors: data.actors,
-        description: data.description,
-        score: data.score,
-        imageUrl: data.imageUrl,
-        published: data.published,
-        submitted: true,
+    this.props
+      .createFilm(title, year, duration, genre, director, actors, description, score, imageUrl, published)
+      .then((data) => {
+        this.setState({
+          id: data.id,
+          title: data.title,
+          year: data.year,
+          duration: data.duration,
+          genre: data.genre,
+          director: data.director,
+          actors: data.actors,
+          description: data.description,
+          score: data.score,
+          imageUrl: data.imageUrl,
+          published: data.published,
+          submitted: true,
+        });
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
       });
-      console.log(data);
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
+  }
 
-newFilm() {
-  this.setState({
-    id: null,
-    title: "",
-    year: "",
-    duration: "",
-    genre: "",
-    director: "",
-    actors: "",
-    description: "",
-    score: "",
-    imageUrl: "",
-    published: false,
-    submitted: false,
-  });
-}
+  newFilm() {
+    this.setState({
+      id: null,
+      title: "",
+      year: "",
+      duration: "",
+      genre: "",
+      director: "",
+      actors: "",
+      description: "",
+      score: "",
+      imageUrl: "",
+      published: false,
+      submitted: false,
+    });
+  }
 
   render() {
     return (
@@ -265,9 +273,11 @@ newFilm() {
                 Submit
               </button>
 
+              <Link to={"/films"} className="nav-link">
               <button onClick={this.saveFilm} className="btn btn-info">
                 Go Back
               </button>
+              </Link>
             </div>
 
           </div>
